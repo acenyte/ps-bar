@@ -1,0 +1,7 @@
+cadbury_ps_theme_negotiator.settings_form:
+  path: '/admin/config/system/cadbury_ps_theme_negotiator'
+  defaults:
+    _title: 'Multiple Theme Negotiator'
+    _form: 'Drupal\cadbury_ps_theme_negotiator\Form\MultipleThemeNegotiatorSettingsForm'
+  requirements:
+    _permission: 'administer site configuration'

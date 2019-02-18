@@ -1,0 +1,7 @@
+name: 'Cadbury PS API'
+description: 'Cadbury PS API'
+type: module
+core: 8.x
+package: custom
+dependencies:
+  - node

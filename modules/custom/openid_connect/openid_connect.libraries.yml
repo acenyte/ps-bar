@@ -1,0 +1,5 @@
+form_lib:
+  js:
+    js/form.js: {}
+  dependencies:
+    - core/jquery

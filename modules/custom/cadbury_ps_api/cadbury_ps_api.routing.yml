@@ -1,0 +1,34 @@
+cadbury.bootstrap:
+  path: /cadbury/api/{api_version}/content
+  defaults:
+    _controller: Drupal\cadbury_ps_api\Controllers\ApiController::content
+  requirements:
+    _permission: 'access content'
+
+cadbury.result.create:
+  path: /cadbury/api/{api_version}/result/create
+  defaults:
+    _controller: Drupal\cadbury_ps_api\Controllers\ApiController::resultCreate
+  requirements:
+    _permission: 'access content'
+
+cadbury.result.load:
+  path: /cadbury/api/{api_version}/result/load/{id}/{token}
+  defaults:
+    _controller: Drupal\cadbury_ps_api\Controllers\ApiController::resultLoad
+  requirements:
+    _permission: 'access content'
+
+cadbury.image.load:
+  path: /image/result/view/{id}/{token}/share.jpg
+  defaults:
+    _controller: Drupal\cadbury_ps_api\Controllers\PageController::loadResultImage
+  requirements:
+    _permission: 'access content'
+
+cadbury.app.logout:
+  path: /auth/logout
+  defaults:
+    _controller: Drupal\cadbury_ps_api\Controllers\ApiController::logout
+  requirements:
+    _permission: 'access content'

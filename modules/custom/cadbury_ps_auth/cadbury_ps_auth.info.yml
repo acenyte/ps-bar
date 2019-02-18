@@ -1,0 +1,7 @@
+name: 'Cadbury PS Auth'
+description: 'Cadbury PS Auth'
+type: module
+core: 8.x
+package: custom
+dependencies:
+  - node

@@ -1,0 +1,20 @@
+cadbury_ps_tokens.user.load:
+  path: /cadbury/api/{api_version}/tokens/user/load/{user_id}/{token}
+  defaults:
+    _controller: Drupal\cadbury_ps_tokens\Controllers\ApiController::userLoad
+  requirements:
+    _permission: 'access content'
+
+cadbury_ps_tokens.user.create:
+  path: /cadbury/api/{api_version}/tokens/user/create/{user_id}/{token}
+  defaults:
+    _controller: Drupal\cadbury_ps_tokens\Controllers\ApiController::userCreate
+  requirements:
+    _permission: 'access content'
+
+cadbury_ps_tokens.code.claim:
+  path: /cadbury/api/{api_version}/tokens/claim/{user_id}/{token}/{code}
+  defaults:
+    _controller: Drupal\cadbury_ps_tokens\Controllers\ApiController::codeClaim
+  requirements:
+    _permission: 'access content'

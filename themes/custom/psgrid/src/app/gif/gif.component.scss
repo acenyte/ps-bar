@@ -1,0 +1,28 @@
+@import "../../scss/colours";
+@import "../../scss/layout";
+
+.gif {
+    margin: auto;
+    max-width: 600px;
+
+    & .image {
+        width: 100%;
+        display: block;
+        background-color: $caramilk;
+        min-height: 100vw;
+        min-width: 100vw;
+
+        @media screen and (min-width: 600px) {
+
+            min-height: 600px;
+            min-width: 600px;
+        }
+
+    }
+
+    & .button {
+        margin: 15px auto;
+        display: block;
+    }
+
+}

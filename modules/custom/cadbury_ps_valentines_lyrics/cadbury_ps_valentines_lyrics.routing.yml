@@ -1,0 +1,71 @@
+cadbury.valentines.entry.create:
+  path: /cadbury/api/{api_version}/valentines/entry/create
+  defaults:
+    _controller: Drupal\cadbury_ps_valentines_lyrics\Controllers\ApiController::entryCreate
+  requirements:
+    _permission: 'access content'
+
+cadbury.valentines.song.create:
+  path: /cadbury/api/{api_version}/valentines/song/create
+  defaults:
+    _controller: Drupal\cadbury_ps_valentines_lyrics\Controllers\ApiController::songResultCreate
+  requirements:
+    _permission: 'access content'
+
+cadbury.valentines.song.load:
+  path: /cadbury/api/{api_version}/valentines/song/load/{id}/{token}
+  defaults:
+    _controller: Drupal\cadbury_ps_valentines_lyrics\Controllers\ApiController::songResultLoad
+  requirements:
+    _permission: 'access content'  
+
+cadbury.valentines.song.download:
+  path: /cadbury/api/{api_version}/valentines/song/download/{id}/{token}
+  defaults:
+    _controller: Drupal\cadbury_ps_valentines_lyrics\Controllers\ApiController::songResultDownload
+  requirements:
+    _permission: 'access content'  
+
+cadbury.valentines.content:
+  path: /cadbury/api/{api_version}/valentines/content
+  defaults:
+    _controller: Drupal\cadbury_ps_valentines_lyrics\Controllers\ApiController::content
+  requirements:
+    _permission: 'access content'
+
+cadbury.valentines.image.load:
+  path: /image/song-result/view/{id}/{token}/share.jpg
+  defaults:
+    _controller: Drupal\cadbury_ps_valentines_lyrics\Controllers\ApiController::displaySongResultImage
+  requirements:
+    _permission: 'access content'
+
+cadbury.valentines.entry.admin.status:
+  path: '/admin/valentines/ajax/status'
+  defaults:
+    _controller: 'Drupal\cadbury_ps_valentines_lyrics\Controllers\ApiController::updateEntryStatus'
+  requirements:
+    _permission: 'ps valentines editor'
+
+cadbury.valentines.entry.download:
+  path: '/admin/valentines/download/{mode}'
+  defaults:
+    _controller: Drupal\cadbury_ps_valentines_lyrics\Controllers\ApiController::download
+  requirements:
+    _permission: 'ps valentines editor'
+
+cadbury.valentines.entry.admin:
+  path: '/admin/valentines/list'
+  defaults:
+    _title: 'Cadbury Valentine Competition Entries'
+    _form: '\Drupal\cadbury_ps_valentines_lyrics\Form\EntryListForm'
+  requirements:
+    _permission: 'ps valentines editor'
+
+cadbury.valentines.entry.view:
+  path: '/admin/valentines/view/{entry_id}'
+  defaults:
+    _title: 'Cadbury Valentine Competition Entry'
+    _form: '\Drupal\cadbury_ps_valentines_lyrics\Form\EntryForm'
+  requirements:
+    _permission: 'ps valentines editor'

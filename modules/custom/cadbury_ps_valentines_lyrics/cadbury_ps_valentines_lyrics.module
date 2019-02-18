@@ -1,0 +1,132 @@
+<?php
+
+use Drupal\Core\Database\Database;
+use Drupal\node\Entity\Node;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\cadbury_ps_api\Models\Result;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_schema().
+ */
+function cadbury_ps_valentines_lyrics_schema() {
+    $schema['cadbury_ps_valentines_lyrics_entry'] = [
+        'description' => 'Stores a user entry for the competition',
+        'fields' => [
+            'id' => [
+                'description'   => 'The primary identifier',
+                'type'          => 'serial',
+                'unsigned'      => true,
+                'not null'      => true,
+            ],
+         
+            'meta_lyrics' => [
+                'description'   => 'The lyrics of the entry',
+                'type'          => 'text',
+                'length'        => 350,
+            ],
+
+            'meta_message' => [
+                'description'   => 'The message of the entry',
+                'type'          => 'int',
+            ],
+
+            'meta_song_name' => [
+                'description'   => 'The song name of the entry',
+                'type'          => 'text',
+                'length'        => 50,
+            ],
+
+            'entry_name' => [
+                'description'   => 'The name of the user',
+                'type'          => 'text',
+                'length'        => 35,
+            ],
+
+            'entry_email' => [
+                'description'   => 'The email address of the user',
+                'type'          => 'text',
+                'length'        => 100,
+            ],
+
+            'entry_mobile' => [
+                'description'   => 'The mobile number address of the user',
+                'type'          => 'text',
+                'length'        => 10,
+            ],
+
+            'entry_terms' => [
+                'description'   => 'The mobile number address of the user',
+                'type'          => 'text',
+                'length'        => 1,
+            ],
+
+            'created' => [
+                'description'   => 'The created data of the entry',
+                'type'          => 'varchar',
+                'mysql_type'    => 'datetime',
+                'not null'      => FALSE,
+            ],
+            'moderated' => [
+                'description'   => 'The moderation status of the entry',
+                'type'          => 'int',
+                'default'       =>  0,
+            ],
+            'starred' => [
+                'description'   => 'The starred status of the entry',
+                'type'          => 'int',
+                'default'       =>  0,
+            ],
+            'selected' => [
+                'description'   => 'The selected status of the entry',
+                'type'          => 'int',
+                'default'       =>  0,
+            ],
+        ],
+        'primary key' => ['id'],
+    ];
+
+    $schema['cadbury_ps_valentines_lyrics_song'] = [
+        'description' => 'Stores a created song result',
+        'fields' => [
+            'id' => [
+                'description'   => 'The primary identifier',
+                'type'          => 'serial',
+                'unsigned'      => true,
+                'not null'      => true,
+            ],
+
+            'song_id' => [
+                'description'   => 'The ID of the song',
+                'type'          => 'int',
+            ],
+
+            'cover_id' => [
+                'description'   => 'The ID of the cover',
+                'type'          => 'int',
+            ],
+
+            'to_name' => [
+                'description'   => 'The to name of the song',
+                'type'          => 'text',
+                'length'        => 35,
+            ],
+
+            'meta' => [
+                'description'   => 'Meta information for the result',
+                'type'          => 'text',
+                'size'          => 'medium',
+            ],
+
+            'created' => [
+                'description'   => 'The created data of the entry',
+                'type'          => 'varchar',
+                'mysql_type'    => 'datetime',
+                'not null'      => FALSE,
+            ],
+        ],
+        'primary key' => ['id'],
+    ];
+
+    return $schema;
+}

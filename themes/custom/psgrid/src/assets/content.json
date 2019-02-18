@@ -1,0 +1,55 @@
+{
+    "categories": [
+        {
+            "tid": 3,
+            "name": "Besties"
+        },
+        {
+            "tid": 2,
+            "name": "I Love You"
+        },
+        {
+            "tid": 1,
+            "name": "Thank You"
+        }
+    ],
+    "options": {
+        "relationships": [
+            {
+                "nid": 1,
+                "category": [
+                    {
+                        "tid": 3
+                    },
+                    {
+                        "tid": 2
+                    }
+                ],
+                "images": {
+                    "large": "http:\/\/localhost\/ps\/www\/ps-website-rollout-2018\/sites\/default\/files\/styles\/large\/public\/2018-07\/LsRsx-j__400x400.jpeg?itok=sV8kUDrX",
+                    "medium": "http:\/\/localhost\/ps\/www\/ps-website-rollout-2018\/sites\/default\/files\/styles\/medium\/public\/2018-07\/LsRsx-j__400x400.jpeg?itok=cZEKnGxM",
+                    "thumbnail": "http:\/\/localhost\/ps\/www\/ps-website-rollout-2018\/sites\/default\/files\/styles\/thumbnail\/public\/2018-07\/LsRsx-j__400x400.jpeg?itok=ZTQIiHKG"
+                }
+            },
+            {
+                "nid": 2,
+                "category": [
+                    {
+                        "tid": 2
+                    },
+                    {
+                        "tid": 1
+                    }
+                ],
+                "images": {
+                    "large": "http:\/\/localhost\/ps\/www\/ps-website-rollout-2018\/sites\/default\/files\/styles\/large\/public\/2018-07\/img_3531-opt-e1495039198339.jpg?itok=8YoEH5qR",
+                    "medium": "http:\/\/localhost\/ps\/www\/ps-website-rollout-2018\/sites\/default\/files\/styles\/medium\/public\/2018-07\/img_3531-opt-e1495039198339.jpg?itok=ki-EPTif",
+                    "thumbnail": "http:\/\/localhost\/ps\/www\/ps-website-rollout-2018\/sites\/default\/files\/styles\/thumbnail\/public\/2018-07\/img_3531-opt-e1495039198339.jpg?itok=DuTeAgeD"
+                }
+            }
+        ],
+        "personalised": [],
+        "iou": [],
+        "bar": []
+    }
+}

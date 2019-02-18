@@ -1,0 +1,4 @@
+services:
+  cadbury_ps_valentines_lyrics.api:
+    class: Drupal\cadbury_ps_valentines_lyrics\Controllers\ApiController
+

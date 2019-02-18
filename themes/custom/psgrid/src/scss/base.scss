@@ -1,0 +1,26 @@
+@import "layout";
+
+body,html {
+    margin:0px;
+    height:100%;
+    -webkit-overflow-scrolling: auto;
+}
+
+.mat-drawer-container {
+    background-color:transparent;
+}
+
+.page-container {
+    padding-top: 75px;
+    padding-bottom: 75px;
+    overflow: hidden;
+
+    @media screen and (min-width: $tablet) {
+        padding-top: 95px;
+    }
+}
+
+*:focus {
+    outline:0;
+}
+

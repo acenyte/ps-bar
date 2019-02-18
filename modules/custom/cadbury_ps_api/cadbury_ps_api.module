@@ -1,0 +1,53 @@
+<?php
+
+use Drupal\Core\Database\Database;
+use Drupal\node\Entity\Node;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\cadbury_ps_api\Models\Result;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_schema().
+ */
+function cadbury_ps_api_schema()
+{
+    $schema['cadbury_ps_api_result'] = [
+        'description' => 'Stores the result from the PS application',
+        'fields' => [
+            'id' => [
+                'description'   => 'The primary identifier',
+                'type'          => 'serial',
+                'unsigned'      => true,
+                'not null'      => true,
+            ],
+            'user_id' => [
+                'description'   => 'The ID of the user',
+                'type'          => 'int',
+            ],
+            'type' => [
+                'description'   => 'The machine name of the Option',
+                'type'          => 'text',
+                'length'        => 255,
+            ],
+            'nid' => [
+                'description'   => 'The nid of the selected option',
+                'type'          => 'int',
+            ],
+            'meta' => [
+                'description'   => 'Meta information for the result',
+                'type'          => 'text',
+                // 'length'        => 16777215,
+                'size'          => 'medium',
+            ],
+            'created' => [
+                'description'   => 'The created date for this result',
+                'type'          => 'varchar',
+                'mysql_type'    => 'datetime',
+                'not null'      => FALSE,
+            ],
+        ],
+        'primary key' => ['id'],
+    ];
+
+    return $schema;
+}

@@ -1,0 +1,5 @@
+services:
+  cadbury_ps_api.api:
+    class: Drupal\cadbury_ps_api\Controllers\ApiController
+  cadbury_ps_api.page:
+    class: Drupal\cadbury_ps_api\Controllers\PageController

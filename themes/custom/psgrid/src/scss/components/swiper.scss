@@ -1,0 +1,72 @@
+@import "../mixins";
+
+swiper,
+.swiper-container-horizontal,
+.swiper-wrapper,
+.swiper-slide  {
+    height: 100%;
+}
+
+.swiper-container {
+
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        @include flex;
+        @include flex-justify-center;
+        @include flex-align-center;
+    }
+
+
+
+    & .swiper-pagination-bullet {
+        opacity: 0.5;
+    }
+
+    & .swiper-pagination-bullet-active {
+        background: white;
+    }
+}
+
+
+
+
+swiper {
+
+    & .swiper-button-next,
+    & .swiper-button-prev {
+
+        background-size: 100% auto;
+        width: 12px;
+
+        @media screen and (min-width: $tablet) {
+            width: 20px;
+        }
+
+        &.swiper-button-disabled {
+            opacity: 0;
+        }
+    }
+
+    & .swiper-button-next {
+        background-image: url('/assets/images/chevron-right.svg');
+        right:25px;
+
+        @media screen and (min-width: $tablet) {
+            right: 50px;
+        }
+    }
+
+    & .swiper-button-prev {
+        background-image: url('/assets/images/chevron-left.svg');
+        left:25px;
+
+        @media screen and (min-width: $tablet) {
+            left:50px;
+        }
+    }
+
+}
+
+
+

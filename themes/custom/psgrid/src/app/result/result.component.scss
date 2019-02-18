@@ -1,0 +1,44 @@
+@import '../../scss/colours';
+@import '../../scss/layout';
+
+.result {
+
+    & .button{
+        display: block;
+        margin: 15px auto;
+        background-color: $caramilk-dark
+
+    }
+
+    &__canvas {
+        width: 100vw;
+        height: 100vw;
+        max-width: 400px;
+        max-height: 400px;
+        margin: 15px auto;
+        display: block;
+        background-size: 100%;
+
+        &.iou-canvas {
+
+            width: 90%;
+            height: auto;
+
+            max-width: 832px;
+            max-height: 372px;
+            box-shadow: 0px 0px 5px $primary-extradark-transparent;
+
+            @media screen and (min-width: $tablet) {
+                width: 90%;
+                height: auto;
+            }
+
+        }
+
+    }
+
+
+
+}
+
+

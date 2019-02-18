@@ -1,0 +1,36 @@
+@mixin flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+@mixin flex-justify-center {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+@mixin flex-align-center {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+@mixin fade-out {
+    -webkit-animation: fadeOut 0.5s ease-out;
+    -moz-animation: fadeOut 0.5s ease-out;
+    -o-animation: fadeOut 0.5s ease-out;
+    animation: fadeOut 0.5s ease-out;
+}
+
+@mixin fill-mode {
+
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -ms-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}

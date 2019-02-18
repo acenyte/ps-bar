@@ -1,0 +1,36 @@
+.v-star {
+    width: 24px;
+    height: 24px;
+    margin: auto;
+    cursor: pointer;
+    background-image: url("../assets/star-inactive.svg");
+    background-size: contain;
+}
+
+.v-star.active{
+    width: 24px;
+    height: 24px;
+    margin: auto;
+    cursor: pointer;
+    background-image: url("../assets/star-active.svg");
+    background-size: contain;
+}
+
+.v-cross {
+    width: 24px;
+    height: 24px;
+    margin: auto;
+    cursor: pointer;
+    background-image: url("../assets/cross.svg");
+    background-size: contain;
+}
+
+
+.v-cross.active {
+    width: 24px;
+    height: 24px;
+    margin: auto;
+    cursor: pointer;
+    background-image: url("../assets/check.svg");
+    background-size: contain;
+}

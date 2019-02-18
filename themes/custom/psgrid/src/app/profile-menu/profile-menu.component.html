@@ -1,0 +1,34 @@
+<div class="profile">
+
+    <div class="profile__name">
+        {{userName}}
+    </div>
+
+    <div class="profile__coin-info">
+        <div class="profile__coin-balance">
+            <div class="profile__number" >{{this.user.balance}}</div>
+            <small>Tokens left</small>
+        </div>
+
+
+    </div>
+
+    <p class="text">
+        Enter a unique code from inside the wrapper of any P.S. bar and get your tokens here.
+        You can also check how many tokens you’ve got to trade.
+    </p>
+
+    <input matInput placeholder="Enter unique code" value="" class="profile__packnumber" [(ngModel)]='packNumber'>
+
+    <button class="button" (click)='claim()'>
+        SUBMIT
+    </button>
+    <p class="text text--error">{{resultText}}</p>
+
+    <br/>
+
+    <button class="button" id="logout-main" (click)="logOut()">
+        LOGOUT
+    </button>
+
+</div>

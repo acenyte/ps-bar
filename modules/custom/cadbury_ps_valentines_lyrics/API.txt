@@ -1,0 +1,8 @@
+Create a new competition entry
+/cadbury/api/1/valentines/entry/create
+
+Get all songs
+/cadbury/api/1/valentines/songs
+
+Get both covers and songs
+/cadbury/api/1/valentines/covers/songs

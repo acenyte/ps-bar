@@ -1,0 +1,7 @@
+name: 'Cadbury PS Tokens'
+description: 'Cadbury PS Tokens'
+type: module
+core: 8.x
+package: custom
+dependencies:
+  - node

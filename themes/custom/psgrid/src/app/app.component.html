@@ -1,0 +1,48 @@
+<ps-header></ps-header>
+
+<mat-icon class="icon" (click)="sidenav.toggle()" *ngIf="!this.atHome()">
+    menu
+</mat-icon>
+
+<mat-icon class="icon" [routerLink]="['']" *ngIf="this.atHome()">
+    home
+</mat-icon>
+
+<!-- LoginTask -->
+<!--<div class="account" *ngIf='!userLoggedIn'>
+    <mat-icon class="icon icon--account" (click)="openDialog()">
+        account_circle
+    </mat-icon>
+</div>
+
+<i class="icon icon--coin" (click)="profile.toggle()" *ngIf='userLoggedIn'></i>-->
+
+<mat-sidenav-container class="container" cdkScrollable>
+    <mat-sidenav
+        #sidenav
+        mode="over"
+        fixedInViewport ="true"
+        (click)="sidenav.toggle()"
+        cdkScrollable>
+
+        <ps-filter-menu (filterEvent)="recieveFilter($event)"></ps-filter-menu>
+
+    </mat-sidenav>
+
+    <!-- LoginTask -->
+    <!--<mat-sidenav
+        #profile mode="over"
+        fixedInViewport ="true"
+        position="end">
+
+            <ps-profile-menu></ps-profile-menu>
+
+    </mat-sidenav>-->
+
+    <mat-sidenav-content>
+
+        <router-outlet></router-outlet>
+
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

@@ -1,0 +1,144 @@
+@import 'colours';
+@import 'typography';
+@import 'layout';
+
+.social-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px auto;
+    flex-wrap: wrap;
+    max-width: 300px;
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    background-color: $primary-light;
+    border-radius: 25px;
+    margin: 10px 10px;
+    background-size: auto 25px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+
+    &.social-icon--whatsapp {
+        background-image: url('/assets/images/whatsapp-icon.svg');
+    }
+
+    &.social-icon--facebook {
+        background-image: url('/assets/images/facebook-icon.svg');
+    }
+
+    &.social-icon--twitter {
+        background-image: url('/assets/images/twitter-icon.svg');
+        background-size: auto 20px;
+    }
+}
+
+.sb-default .sb-wrapper {
+
+
+    &.sb-whatsapp,
+    &.sb-facebook,
+    &.sb-twitter {
+        width: 50px;
+        min-width: 50px;
+        height: 50px;
+        background-color: $caramilk-dark;
+        --button-color: $caramilk-dark;
+        border-radius: 25px;
+        margin: 10px 10px;
+
+    }
+
+    & .sb-icon {
+        background-color: $caramilk-dark;
+        background-size: auto 25px;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        font-size: 22px;
+    }
+
+
+}
+
+.button {
+    background-color: $primary-dark;
+    padding: 12px 20px 16px;
+    color: white;
+    font-family: 'GalanoGrotesque-Bold', Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    line-height: 24px;
+    border: 0px;
+    width: 190px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+
+    &[disabled] {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    &.small {
+        font-size: 14px;
+    }
+
+    &--next {
+        margin: 15px auto;
+        display: block;
+        width: 200px;
+    }
+
+    &--dark {
+        background-color: $primary-extradark;
+    }
+
+
+
+}
+
+.mat-tab-header, .mat-tab-nav-bar {
+    border: none;
+}
+
+.mat-tab-label {
+    font-family: 'GalanoGrotesque-Bold', Arial, Helvetica, sans-serif
+}
+
+.mat-tab-body {
+    padding: 15px;
+}
+
+.mat-tab-list {
+    display: flex;
+    justify-content: center;
+    font-family: 'GalanoGrotesque-Bold';
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar {
+    background-color: $caramilk-dark;
+}
+
+.sb-wrapper {
+    &[disabled='true'] {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+
+.icon {
+    &.icon--close {
+        color: $primary-extradark;
+        top: 80px;
+        right: 10px;
+        display: none;
+
+        @media screen and (min-width: $tablet) {
+            display: block;
+        }
+    }
+}

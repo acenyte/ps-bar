@@ -1,0 +1,41 @@
+{% if '/user/' in url or '/admin/' in url or '/node/' in url or '/auth/' in url or '/oauth2/' in url %}
+    <div class="layout-container">
+
+    <main role="main">
+        <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+
+        <div class="layout-content">
+            {{ page.content }}
+        </div>
+
+    </main>
+
+    {% if page.footer %}
+        <footer role="contentinfo">
+            {{ page.footer }}
+        </footer>
+    {% endif %}
+
+    </div>
+
+{% else %}
+
+    <script>
+        window.userId = {{ user_id }};
+        window.userToken = "{{ user_token }}";
+        window.userName = "{{ user_name }}";
+    </script>
+
+    <div style="display:none;">
+        <div id="oauth-clone-origin">
+            <div class="site-blocks">
+                {{ page.header }}
+            </div>
+        </div>
+    </div>
+
+    <base href="/psbar/">
+    <ps-root></ps-root>
+    {{ attach_library('psgrid/global-styling') }}
+
+{%  endif %}

@@ -1,0 +1,99 @@
+@import "../../scss/layout";
+@import"../../scss/colours";
+
+.mat-dialog-container {
+    background: $primary-medium;
+    text-align: center;
+    padding-bottom: 60px;
+    width: 380px;
+
+    & .text {
+        color: white;
+        margin-top: 0px;
+    }
+
+    & .heading {
+        color:white;
+        margin-bottom: 0px;
+    }
+
+    #openid-connect-login-form {
+        display: flex;
+        flex-direction: row-reverse;
+        width: 220px;
+        flex-wrap: wrap-reverse;
+        margin: 0px auto;
+        justify-content: center;
+    }
+
+    & .button {
+        -webkit-appearance: none;
+        display: block;
+        margin: 0 auto 10px;
+        width: 220px;
+        height: 52px;
+        text-transform: uppercase;
+        background-image: none;
+        font-size: 14px;
+        min-width: 220px;
+        padding: 16px;
+        line-height:16px;
+    }
+
+    & .button--register {
+        display: block;
+        margin: 0 auto;
+        min-width: 190px;
+        width: 190px;
+        height: 16px;
+        line-height:16px;
+    }
+
+
+    /*& #edit-openid-connect-client-facebook-login {
+        background-image: url('/assets/images/facebook-icon-purple.svg');
+        background-color: white;
+        border-color: white;
+        width: 40px;
+        height: 40px;
+        background-size: auto 20px;
+        border-radius: 25px;
+        margin: 10px 10px;
+        background-repeat: no-repeat;
+        background-position: 50%;
+    }*/
+
+    .horizontal-seperator {
+
+        border-top: 1px solid rgba(255, 255, 255, 0.5);
+        text-align: center;
+        display: block;
+        max-width: 300px;
+        margin: 20px auto;
+
+
+        &:after {
+            content: 'OR';
+            display: inline-block;
+            position: relative;
+            top: -11px;
+            padding: 0px 5px;
+            background: $primary-medium;
+            color: white;
+            font-family: 'GalanoGrotesque-Bold', Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            line-height: 16px
+        }
+
+    }
+
+    #edit-selected-field {
+        height:0px;
+        width: 0px;
+        visibility: hidden
+    }
+
+    #block-psregisterurl {
+        display: none;
+    }
+}

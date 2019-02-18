@@ -1,0 +1,173 @@
+<div class='page-container song-sharer'>
+    <mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)" [selectedIndex]="selectedTab">
+
+        <mat-tab label="Choose a Song">
+
+            <h4 class="heading">South Africans like you wrote them, professional musicians performed them. These are your P.S. love songs.</h4>
+            <p class="text">Share one with someone you love this Valentine’s Day.</p>
+
+            <ng-container
+                *ngFor="let song of songs; let i = index">
+
+                <div class="song"
+                    [style.backgroundImage]="'url('+ song.cover +')'"
+                    (click)="selectSong($event)"
+                    [attr.data-nid]="song.nid"
+                    [attr.data-file]="song.file">
+                    <button class="button--song" mat-icon-button color="primary" (click)="playSong($event)" [attr.data-file]="song.file" [attr.data-nid]="song.nid">
+                        <div class="label ">{{song.language}}</div>
+                        <mat-icon class="icon icon--play">
+                            play_arrow
+                            <span>PLAY</span>
+                        </mat-icon>
+                        <mat-icon class="icon icon--pause">
+                            pause
+                            <span>PAUSE</span>
+                        </mat-icon>
+                        <div class="loader" id="loader">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <span>Loading</span>
+                        </div>
+                    </button>
+    
+                </div>
+
+            </ng-container>
+
+        </mat-tab>
+
+        <mat-tab label="Choose a Cover" [disabled]="finalAlbum.song_id == 0">
+
+            <h4 class="heading">Choose your cover</h4>
+            <p class="text">What’s a love song without an album cover? Select your design and add the name of that special someone you want to share it with.</p>
+            <mat-form-field appearance="outline">
+                <mat-label>Recipient’s name</mat-label>
+                <input matInput
+                    placeholder=""
+                    value=""
+                    [(ngModel)]='recipient'
+                    (input)='setCover()'
+                    maxlength="15" required>
+            </mat-form-field>
+
+            <swiper [config]="configAlbum" #albumSwiper class="album-swiper">
+
+                <div class="swiper-wrapper">
+
+                    <ng-container
+                        *ngFor="let cover of covers; let i = index">
+
+                        <div class="swiper-slide">
+
+                            <img [src]="cover.file"
+                                [attr.data-color]="cover.background"
+                                [attr.data-nid]="cover.nid"
+                                class="album__image">
+    
+                            <!-- <div class="recipient">
+
+                                <div class="text recipient__text" 
+                                    [style.backgroundColor]="cover.background"
+                                    *ngIf="recipient !== ''">
+
+                                    {{recipient}}
+
+                                </div>
+
+                            </div> -->
+    
+                        </div>
+                        
+                    </ng-container>
+
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+
+            </swiper>
+            
+
+        </mat-tab>
+
+        <mat-tab label="Preview and Share" [disabled]="finalAlbum.cover_id == 0 || finalAlbum.to_name == ''">
+            
+            <h4 class="heading">Your song is ready to share</h4>
+            <div class="song-canvas">
+                
+                <canvas class="album__canvas" id="album__canvas"></canvas>
+                <button class="button--preview" color="primary" (click)="playSongPreview()">
+                    <mat-icon class="icon icon--play">
+                        play_arrow
+                        <span>PLAY</span>
+                    </mat-icon>
+                    <mat-icon class="icon icon--pause">
+                        pause
+                        <span>PAUSE</span>
+                    </mat-icon>
+                    
+                </button>
+                
+            </div>
+            
+            
+
+        </mat-tab>
+
+        
+    </mat-tab-group>
+    <div class="fixed-container">
+        <button *ngIf="this.selectedTab == 0" class="button button--next" (click)="changeTab()" [disabled]="finalAlbum.song_id == 0"> NEXT</button>
+        
+        <button *ngIf="this.selectedTab == 1" class="button button--next" (click)="changeTab()" [disabled]="finalAlbum.cover_id == 0 || finalAlbum.to_name == ''"> NEXT</button>
+
+        <div *ngIf="this.selectedTab === 2" class="social-container">
+
+            <button class="button"
+                id="download"
+                (click)="download()">
+                DOWNLOAD AND SHARE
+            </button>
+            <a class="button"
+                *ngIf="this.iOS"
+                href="mailto:?body={{emailText}}"
+                id="email">
+                SEND TO EMAIL 
+            </a>
+            <div class="loader" id="loader"><div></div><div></div><div></div></div>
+
+            <share-button id="song-share-facebook" 
+                            (click)="gaTrack('facebook')"
+                            button="facebook" 
+                            text="Share" 
+                            [showText]="false" 
+                            [autoSetMeta]="true"
+                            [url]="resultURL">
+            </share-button>
+            <share-button id="song-share-twitter" 
+                            (click)="gaTrack('twitter')"
+                            button="twitter" 
+                            text="Tweet" 
+                            [showText]="false" 
+                            [autoSetMeta]="true" 
+                            [url]="resultURL"
+                            [description]="'A song made with Cadbury P.S.'"
+                            [tags]="'FindLoveInYourLanguage'">
+            </share-button>
+            <share-button id="song-share-whatsapp" 
+                            button="whatsapp" 
+                            (click)="gaTrack('whatsapp')"
+                            text="Share" 
+                            [showText]="false" 
+                            [autoSetMeta]="true"
+                            [url]="resultURL"
+                            [description]="'#FindLoveInYourLanguage A song made with Cadbury P.S.'"
+                            [tags]="'FindLoveInYourLanguage'">
+            </share-button>
+
+        </div>
+            
+    </div>
+    
+</div>

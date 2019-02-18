@@ -1,0 +1,98 @@
+@import "mixins";
+
+.hide
+{
+    @include fade-out;
+    @include fill-mode;
+}
+
+
+@-webkit-keyframes fadeOut {
+    0% {
+        display: block;
+        opacity: 1;
+    }
+
+    100% {
+        display: none;
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes fadeOut {
+    0% {
+        display: block;
+        opacity: 1;
+    }
+
+    100% {
+        display: none;
+        opacity: 0;
+    }
+}
+
+@-o-keyframes fadeOut {
+    0% {
+        display: block;
+        opacity: 1;
+    }
+
+    100% {
+        display: none;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        display: block;
+        opacity: 1;
+    }
+
+    100% {
+        display: none;
+        opacity: 0;
+    }
+}
+
+.loader {
+    display: inline-block;
+    position: absolute;
+    width: 230px;
+    height: 60px;
+    z-index: 3;
+    bottom: 40px;
+
+}
+
+.loader div {
+  display: inline-block;
+  position: absolute;
+  left: 6px;
+  width: 8px;
+  background: #49237C;
+  animation: loaderbars 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.loader div:nth-child(1) {
+  left: 98px;
+  animation-delay: -0.24s;
+}
+.loader div:nth-child(2) {
+  left: 111px;
+  animation-delay: -0.12s;
+}
+.loader div:nth-child(3) {
+  left: 124px;
+  animation-delay: 0;
+}
+@keyframes loaderbars {
+  0% {
+    top: 6px;
+    height: 51px;
+  }
+  50%, 100% {
+    top: 19px;
+    height: 26px;
+  }
+}
+

@@ -1,0 +1,170 @@
+<?php
+
+use Drupal\Core\Database\Database;
+use Drupal\node\Entity\Node;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\cadbury_ps_api\Models\Result;
+use Drupal\cadbury_ps_valentines_lyrics\Models\SongResult;
+use Drupal\cadbury_ps_valentines_lyrics\Models\Cover;
+use Drupal\cadbury_ps_valentines_lyrics\Models\Song;
+use Drupal\Core\Url;
+
+function psgrid_preprocess_page(&$variables) {
+    $variables['url'] = $_SERVER['REQUEST_URI'];
+    $variables['#cache']['contexts'][] = 'url.path';
+    $variables['user_id'] = Drupal::currentUser()->id();
+    $variables['user_token'] = 0 == Drupal::currentUser()->id() ? 0 : md5(Drupal::currentUser()->id() ."CFd37mVWN1ND9eoBgYTPNmtiYmPuYhQ1");
+    $variables['user_name'] =  "";
+
+    if ( 0 !== $variables['user_id'] ){
+        $account = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+
+        if ( $account != null ){
+            $variables['user_name'] = $account->get('name')->value;
+        }
+    }
+}
+
+
+function psgrid_page_attachments_alter(&$page) {
+
+    $current_uri = \Drupal::request()->getRequestUri();
+    $base =  Drupal::urlGenerator()->generateFromRoute('<front>', [], ['absolute' => TRUE]);
+
+    if ( strpos($current_uri, '/result/') !== false ) {
+        $url_fragements = explode('/result/' ,$current_uri);
+        if ( 2 === count($url_fragements) ){
+            $id_token = explode("/", $url_fragements[1]);
+
+            $result = Result::load($id_token[0], $id_token[1]);
+
+            $page['#attached']['html_head'][] = [
+                [
+                    '#tag'          => 'meta',
+                    '#attributes'   => [
+                        'property'      => 'og:image',
+                        'content'       => $base . "image/result/view/" . $id_token[0] . "/" . $id_token[1] . "/share.jpg",
+                    ],
+                ],
+                'og:image'
+            ];
+
+            $page['#attached']['html_head'][] = [
+                [
+                    '#tag'          => 'meta',
+                    '#attributes'   => [
+                        'property'      => 'og:image:secure_url',
+                        'content'       => $base . "image/result/view/" . $id_token[0] . "/" . $id_token[1] . "/share.jpg",
+                    ],
+                ],
+                'og:image:secure_url'
+            ];
+
+            $page['#attached']['html_head'][] = [
+                [
+                    '#tag'          => 'meta',
+                    '#attributes'   => [
+                        'property'      => 'og:image:width',
+                        'content'       => '400',
+                    ],
+                ],
+                'og:image:width'
+            ];
+
+            $page['#attached']['html_head'][] = [
+                [
+                    '#tag'          => 'meta',
+                    '#attributes'   => [
+                        'property'      => 'og:image:height',
+                        'content'       => '400',
+                    ],
+                ],
+                'og:image:height'
+            ];
+        }
+    }
+
+    // Meta for song result page
+    if ( strpos($current_uri, '/song-result/') !== false ) {
+        $url_fragements = explode('/song-result/' ,$current_uri);
+        
+        if ( 2 === count($url_fragements) ){
+            $id_token = explode("/", $url_fragements[1]);
+
+            $result = SongResult::load($id_token[0], $id_token[1]);
+            
+            $songs = Song::getAll();
+            $covers = Cover::getAll();
+            $cover_image = null;
+
+            foreach( $covers as $cover ):
+                if ( $cover['nid'] == $result['data']->cover_id ){
+                    $cover_image = $cover['cover'];
+                }
+            endforeach;
+
+            $page['#attached']['html_head'][] = [
+                [
+                    '#tag'          => 'meta',
+                    '#attributes'   => [
+                        'property'      => 'og:image',
+                        'content'       => $cover_image,
+                    ],
+                ],
+                'og:image'
+            ];
+
+            // TODO: set additional meta properties
+
+        }
+    }
+
+    // Get the default page meta
+    $nids = \Drupal::entityQuery('node')
+        ->condition('type',["ps_meta"])
+        ->condition('status',TRUE)
+        ->execute();
+
+    $nodes = Node::loadMultiple($nids);
+    $meta = [];
+
+    foreach ( $nodes as $node ):
+        foreach ( $node->field_ps_meta_item as $meta_item ):
+            $item = Paragraph::load($meta_item->target_id);
+            $meta[$item->field_ps_meta_key->value] = $item->field_ps_meta_value->value;
+
+            $should_add = true;
+            foreach ( $page['#attached']['html_head'] as $existing_tag ):
+                if ( $item->field_ps_meta_key->value == $existing_tag[1] ){
+                    $should_add = false;
+                }
+            endforeach;
+
+            if ( $should_add ){
+                $page['#attached']['html_head'][] = [
+                    [
+                        '#tag'          => 'meta',
+                        '#attributes'   => [
+                            'content'       => $item->field_ps_meta_value->value,
+                            'property'      => $item->field_ps_meta_key->value,
+                        ],
+                    ],
+                    $item->field_ps_meta_key->value
+                ];
+    
+                if ( "title" == $item->field_ps_meta_key->value ){
+                    $page['#attached']['html_head'][] = [
+                        [
+                          '#tag'    => 'title',
+                          '#value'  => $item->field_ps_meta_value->value,
+                        ],
+                        'title'
+                    ];
+                }
+            }
+        endforeach;
+        break;
+    endforeach;
+
+    return $page;
+}

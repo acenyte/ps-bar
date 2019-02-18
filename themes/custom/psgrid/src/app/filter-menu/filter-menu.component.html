@@ -1,0 +1,55 @@
+<p class="text">Filter by: </p>
+<mat-radio-group
+    labelPosition='before'
+    class="filter-radio-group"
+    [(ngModel)]="selectedFilter"
+    (change)='sendFilter()'
+    >
+
+
+
+    <mat-radio-button
+        class="filter-radio-button"
+        [checked]="checkFilter('all')"
+        [value]="undefined"
+        labelPosition = "before"
+        >
+        All
+    </mat-radio-button>
+
+    <mat-radio-button
+        class="filter-radio-button"
+        [checked]="checkFilter(filter.filterId)"
+        *ngFor="let filter of filters"
+        [value]="filter.filterId"
+        labelPosition = "before"
+        [style.color] = 'filter.color'
+        [routerLink]="['']" [fragment]="filterList[filter.tid-1]">
+
+        {{filter.name}}
+
+    </mat-radio-button>
+
+
+</mat-radio-group>
+
+<div class="help">
+    <a class="link" (click)="openIntro()">
+        Not sure what to do?
+    </a>
+
+    <a class="link" [routerLink]="['ps/cookie-policy']">
+        Cookie Policy
+    </a>
+
+    <a class="link"[routerLink]="['ps/privacy-policy']">
+        Privacy Policy
+    </a>
+
+    <a class="link" [routerLink]="['ps/terms-and-conditions']">
+        Terms and Conditions
+    </a>
+</div>
+
+
+

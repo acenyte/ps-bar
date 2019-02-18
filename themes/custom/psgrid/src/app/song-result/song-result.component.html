@@ -1,0 +1,46 @@
+<div class='page-container result'>
+    <small class="preload-font" style="font-family: 'BowlbyOne-Regular'">.</small>
+    <br />
+
+    <canvas class="album__canvas" id="album__canvas"></canvas>
+    <button class="button--preview loading" color="primary" (click)="playSongPreview()">
+        <mat-icon class="icon icon--play">
+            play_arrow
+            <span>PLAY</span>
+        </mat-icon>
+        <mat-icon class="icon icon--pause">
+            pause
+            <span>PAUSE</span>
+        </mat-icon>
+        <div class="loader" id="loader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <span>Loading</span>
+        </div>
+        
+    </button>
+
+    <br />
+    
+    <a class="button"
+        (click)="download()"
+        id="download">
+        DOWNLOAD 
+    </a>
+
+    <a class="button"
+        *ngIf="this.iOS"
+        href="mailto:?body={{emailText}}"
+        id="email">
+        SEND TO EMAIL 
+    </a>
+    
+    <a class="button"
+        [routerLink]="['/ps/share-mzansi-songs']">
+        MORE SONGS
+    </a>
+
+</div>
+
+

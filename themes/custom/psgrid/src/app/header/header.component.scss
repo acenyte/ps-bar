@@ -1,0 +1,52 @@
+@import "../../scss/layout";
+
+.header {
+    background-repeat: no-repeat;
+    background-color: transparent;
+    //background-image:   url(../../assets/images/menu-curve.svg);
+    background-image:   linear-gradient(to bottom, rgb(100, 63, 144) ,rgb(73, 35, 124) 60px, rgba(0,0,0,0) 60px),
+                        url(../../assets/images/menu-curve.svg);
+    background-position: center bottom;
+    background-size: 110%;
+    height: 70px;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    padding: 0;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+
+    @media screen and (min-width: $tablet) {
+        background-size: auto 70px;
+    }
+
+    @media screen and (min-width: $desktop-small) {
+        background-size: 110%;
+        height: 85px;
+    }
+
+    @media screen and (min-width: $desktop-small) {
+        background-size: auto 90px;
+    }
+
+
+    @media screen and (min-width: $desktop-large) {
+        background-size: 200%;
+
+    }
+
+    .logo {
+        width: 120px;
+        margin: auto;
+        display: block;
+        cursor: pointer;
+
+        @media screen and (min-width: $desktop-small) {
+            width: 155px;
+        }
+    }
+
+}
+

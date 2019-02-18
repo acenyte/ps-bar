@@ -1,0 +1,66 @@
+@import '../../scss/colours';
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 100%;
+    justify-content: center;
+
+
+    & .profile__name, & .profile__surname {
+        font-family : 'GalanoGrotesque-Bold', sans-serif;
+        display: block;
+        color: $primary-light;
+        font-size: 20px;
+        line-height: 22px;
+
+    }
+
+    & .profile__coin-info {
+        width: 220px;
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0px;
+
+        & .profile__coin-balance {
+            background: $primary-medium;
+            width: 80px;
+            padding: 10px 10px 15px;
+            color: white;
+            font-family: 'GalanoGrotesque-Bold', sans-serif;
+            line-height: 10px;
+        }
+
+        & .profile__number {
+            font-size: 24px;
+            line-height: 24px;
+            padding-bottom: 10px;
+        }
+    }
+
+    & .profile__packnumber {
+        border: 1px solid $primary-light;
+        margin: 10px 0;
+        padding: 10px;
+        color: $primary-light;
+        font-weight: bold;
+        font-family: 'GalanoGrotesque-Bold', sans-serif;
+        width: 180px;
+    }
+
+    & .button {
+        width: 202px;
+        margin: 0px;
+        font-size: 14px;
+    }
+
+
+
+    & .text {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+
+}

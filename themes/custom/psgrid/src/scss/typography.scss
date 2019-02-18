@@ -1,0 +1,233 @@
+@import 'colours';
+@import url('https://fonts.googleapis.com/css?family=Anton|Bangers|Bungee|Fredoka+One|Hanalei+Fill|Kalam|Knewave|Pacifico|Passion+One|Permanent+Marker|Sedgwick+Ave|Sigmar+One');
+
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/assets/fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2') format('woff2');
+  }
+  
+  .material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
+
+@font-face {
+    font-family: 'GalanoGrotesque-Bold';
+    src: url('/assets/fonts/GalanoGrotesque-Bold.eot?#iefix') format('embedded-opentype'),
+        url('/assets/fonts/GalanoGrotesque-Bold.otf')  format('opentype'),
+        url('/assets/fonts/GalanoGrotesque-Bold.woff') format('woff'),
+        url('/assets/fonts/GalanoGrotesque-Bold.ttf')  format('truetype'),
+        url('/assets/fonts/GalanoGrotesque-Bold.svg#GalanoGrotesque-Bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'BowlbyOne-Regular';
+    src: url('/assets/fonts/BowlbyOne-Regular.eot?#iefix') format('embedded-opentype'),
+        url('/assets/fonts/BowlbyOne-Regular.woff') format('woff'),
+        url('/assets/fonts/BowlbyOne-Regular.ttf')  format('truetype'),
+        url('/assets//fonts/BowlbyOne-Regular.svg#BowlbyOne-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Anton';
+    src: url('/assets/fonts/Anton-Regular.ttf')  format('truetype');
+}
+
+
+@font-face {
+    font-family: 'Bangers';
+    src: url('/assets/fonts/Bangers-Regular.ttf')  format('truetype');
+}
+
+@font-face {
+    font-family: 'Bungee';
+    src: url('/assets/fonts/Bungee-Regular.ttf')  format('truetype');
+}
+
+@font-face {
+    font-family: 'Fredoka One';
+    src: url('/assets/fonts/FredokaOne-Regular.ttf')  format('truetype');
+}
+
+@font-face {
+    font-family: 'Hanalei Fill';
+    src: url('/assets/fonts/HanaleiFill-Regular.ttf')  format('truetype');
+}
+
+@font-face {
+    font-family: 'Kalam';
+    src: url('/assets/fonts/Kalam-Regular.ttf')  format('truetype');
+}
+
+@font-face {
+    font-family: 'Knewave';
+    src: url('/assets/fonts/Knewave-Regular.ttf')  format('truetype');
+}
+
+@font-face {
+    font-family: 'Pacifico';
+    src: url('/assets/fonts/Pacifico-Regular.ttf')  format('truetype');
+}
+
+@font-face {
+    font-family: 'Passion One';
+    src: url('/assets/fonts/PassionOne-Regular.ttf')  format('truetype');
+}
+
+@font-face {
+    font-family: 'Permanent Marker';
+    src: url('/assets/fonts/PermanentMarker-Regular.ttf')  format('truetype');
+}
+
+@font-face {
+    font-family: 'Sedgwick Ave';
+    src: url('/assets/fonts/SedgwickAve-Regular.ttf')  format('truetype');
+}
+
+@font-face {
+    font-family: 'Sigmar One';
+    src: url('/assets/fonts/SigmarOne-Regular.ttf')  format('truetype');
+}
+
+
+.text {
+    font-size: 18px;
+    font-family: 'GalanoGrotesque-Bold', Arial, Helvetica, sans-serif;
+    color: $primary-extradark;
+
+    &--error {
+        font-size: 14px;
+        line-height: 14px;
+        color: $error
+    }
+}
+
+
+.heading {
+    font-size: 18px;
+    font-family: 'BowlbyOne-Regular', Arial, Helvetica, sans-serif;
+    color: $primary-extradark;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+}
+
+
+
+.preload-font {
+    display: inline;
+    font-size: 0;
+}
+
+.legal {
+    padding-left: 45px;
+    padding-right: 45px;
+    font-family: Arial, Helvetica, sans-serif;
+    color:$primary-extradark;
+    max-width: 1000px;
+    margin: auto;
+
+    & .link {
+        text-decoration: underline;
+        cursor: pointer;
+        font-family:  Arial, Helvetica, sans-serif;
+        color: $primary-extradark;
+    }
+
+    & ol {
+        counter-reset: secondary;
+        padding-left: 25px;
+
+        & li {
+            font-weight: bold;
+            font-size: 18px;
+            font-family: Arial-Black, Helvetica, sans-serif;
+            counter-increment: secondary;
+            margin-bottom: 10px;
+            
+
+            & ol {
+                list-style-type: none;
+                padding-left: 40px;
+
+
+
+                & li {
+                     & .text {
+                         display: inline;
+                     }
+                }
+                
+                & li:before {
+                    content: counters(secondary, ".") " ";
+                    margin-left: -40px;
+                }
+            }
+
+            & ol.alpha {
+                font-weight: normal;
+                list-style-type: lower-alpha;
+                
+
+                & li {
+                    font-weight: normal;
+                    display: list-item;
+                    font-family: Arial, Helvetica, sans-serif;
+                    line-height: 24px;
+                }
+
+                & li:before {
+                    
+                    content:none;
+
+                }
+
+            }
+        }
+
+    }
+
+    & .heading {
+        text-align: left;
+        margin-top: 40px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        line-height: 24px;
+        font-family: Arial-Black, Helvetica, sans-serif;
+    }
+
+    & .text {
+        margin-top: 0px;
+        font-weight: normal;
+        line-height: 24px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    & .alphabet {
+        list-style: lower-alpha;
+
+        & li {
+            margin-bottom: 15px;
+        }
+    }
+
+
+}

@@ -1,0 +1,158 @@
+@import '../../scss/layout';
+@import '../../scss/colours';
+
+.booklet {
+
+    text-align: center;
+
+    .booklet__voucher-image--stamp {
+        width: 300px;
+        height: 134px;
+        margin: 10px;
+        box-shadow: 0px 0px 5px lightgrey;
+    }
+
+    &__voucher-list {
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style: none;
+        padding: 0px;
+        max-width: 1280px;
+        margin: auto;
+
+        & .mat-checkbox {
+
+            & .mat-checkbox-layout {
+                display: block;
+                opacity: inherit;
+            }
+
+            & .mat-checkbox-inner-container {
+                position: absolute;
+                margin: 10px;
+            }
+        }
+
+
+        & .booklet__voucher-image {
+
+            width: 300px;
+            height: 134px;
+            margin: 10px;
+            box-shadow: 0px 0px 5px lightgrey;
+
+        }
+
+        &.booklet__voucher-list--sortable {
+
+            & .booklet__voucher-item {
+                cursor: move;
+                cursor: -moz-grab;
+                cursor: -webkit-grab;
+            }
+        }
+
+    }
+
+    & .iou-swiper {
+        max-height: 260px;
+    }
+
+    & .swiper-slide {
+        width: 275px;
+        display: block;
+        opacity: 0.4;
+
+        @media screen and (min-width: $tablet) {
+            width: 550px;
+        }
+
+        &.swiper-slide-active {
+            opacity: 1;
+        }
+
+        & .booklet__cover-image {
+            width: 100%;
+        }
+
+        & .recipient {
+            position: absolute;
+            width: 100%;
+            z-index: 8;
+            top: -2px;
+
+
+            @media screen and (min-width: $tablet) {
+                top: 6px;
+            }
+
+            & .recipient__text {
+                color: white;
+                letter-spacing: 0.7px;
+                text-align: center;
+                font-size: 9px;
+                display: inline;
+                padding: 0px 10px 3px;
+                border-radius: 5px;
+
+                @media screen and (min-width: $tablet) {
+                    font-size: 18px;
+                    padding: 0px 15px 5px;
+                }
+            }
+
+        }
+
+
+    }
+
+    & .mat-tab-body {
+        height: 100%;
+    }
+
+    & .iou__canvas {
+
+        width: 90%;
+        height: auto;
+
+        max-width: 832px;
+        max-height: 372px;
+        box-shadow: 0px 0px 5px $primary-extradark-transparent;
+
+        @media screen and (min-width: $tablet) {
+            width: 90%;
+            height: auto;
+        }
+
+        &--hidden {
+            display: none;
+        }
+
+
+    }
+
+    & .button {
+        background-color: $caramilk-dark
+    }
+
+    & .social-container {
+        & .button {
+            background-color: $primary-dark;
+            font-size: 14px;
+            width: 230px;
+        }
+    }
+
+    & .error {
+            & .mat-input-element {
+            color: $error;
+            border-bottom-color: $error;
+            }
+
+            & .mat-form-field-underline {
+                background-color: $error;
+            }
+        }
+}

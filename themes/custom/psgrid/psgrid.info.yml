@@ -1,0 +1,10 @@
+name: PS Grid Campaign Theme
+type: theme
+description: 'Theme for bootstraping angularjs library assets.'
+core: 8.x
+base theme: stable
+regions:
+  header: Header
+  content: Content
+  sidebar_first: 'Sidebar first'
+  footer: Footer

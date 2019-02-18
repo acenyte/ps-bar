@@ -1,0 +1,88 @@
+<div class="intro" mat-dialog-title>
+    <button [mat-dialog-close] class="close">
+        <mat-icon class="icon icon--close">close</mat-icon>
+    </button>
+
+
+    <div class="intro__overlay">
+
+
+
+        <div class="intro__swiper">
+
+
+            <swiper [config]="configIntro" #usefulSwiper>
+
+
+                <div class="swiper-wrapper">
+
+
+                    <div class="swiper-slide">
+
+                        <h3 class="heading">Hello!</h3>
+
+                        <img class="intro__image" src="/assets/images/intro-slide1.png">
+                        <p class="text">
+                            Cadbury P.S. is more than just a chocolate bar. It has 10 awesome messages to help you express how you feel.
+                        </p>
+
+                    </div>
+
+                    <div class="swiper-slide">
+
+                        <h3 class="heading">How to use the site</h3>
+
+                        <img class="intro__image" src="/assets/images/intro-slide2.png">
+                        <p class="text">
+                                And now we’re bringing you even more ways to help you say what you wanna say.
+                        </p>
+                        <p class="text">
+                                Each clickable square on the site lets you discover new ways to #SayItWithPS.
+                        </p>
+
+                        <button class="button button--dark" [mat-dialog-close]>
+                            Start Exploring
+                        </button>
+
+
+                    </div>
+
+
+                    <!-- LoginTask -->
+                    <!--<div class="swiper-slide">
+
+                        <h3 class="heading">Get your tokens</h3>
+
+                        <img class="intro__image" src="/assets/images/intro-slide3.png">
+                        <p class="text">
+                            Get your tokens
+                            From time to time you’ll need to use tokens to exchange for cool things. Get tokens by
+                            buying P.S. bars and entering the unique code found inside the wrapper.
+                            <br>
+                            <br>
+                            Log into your profile to enter your unique code and save your tokens for when you’re ready
+                            to #SayItWithPS. Each bar is worth 1 000 tokens.
+                        </p>
+
+
+                    </div>-->
+
+
+                </div>
+
+
+                <!--<div class="swiper-pagination"></div>-->
+
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+
+
+            </swiper>
+
+        </div>
+
+    </div>
+
+
+
+</div>

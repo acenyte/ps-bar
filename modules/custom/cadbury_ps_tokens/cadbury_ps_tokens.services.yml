@@ -1,0 +1,3 @@
+services:
+  cadbury_ps_auth.auth:
+    class: Drupal\cadbury_ps_auth\Controllers\AuthController

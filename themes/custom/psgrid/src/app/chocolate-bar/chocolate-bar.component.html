@@ -1,0 +1,20 @@
+<div class="chocolate-bar">
+
+    <mat-icon class="icon icon--close" [routerLink]="['']">
+        close
+    </mat-icon>
+
+    <swiper [config]="configBar" #barSwiper *ngIf="options">
+
+        <div class="swiper-wrapper" [innerHTML]="swiperData">
+
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+    </swiper>
+
+</div>
+
+

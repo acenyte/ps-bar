@@ -1,0 +1,143 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function cadbury_ps_tokens_schema()
+{
+    $schema['cadbury_ps_tokens_user'] = [
+        'description' => 'Stores the user tokens for the PS application',
+        'fields' => [
+            'id' => [
+                'description'   => 'The primary identifier',
+                'type'          => 'serial',
+                'unsigned'      => true,
+                'not null'      => true,
+            ],
+            'user_id' => [
+                'description'   => 'The ID of the user',
+                'type'          => 'int',
+            ],
+            'user_name' => [
+                'description'   => 'The user name',
+                'type'          => 'varchar',
+                'length'        => 90,
+            ],
+            'token' => [
+                'description'   => 'The SSO token for the user',
+                'type'          => 'varchar',
+                'length'        => 64,
+            ],
+            'balance' => [
+                'description'   => 'The user token balance',
+                'type'          => 'int',
+                'default'       =>  0,
+            ],
+            'created' => [
+                'description'   => 'The created date for this result',
+                'type'          => 'varchar',
+                'mysql_type'    => 'datetime',
+                'not null'      => FALSE,
+            ],
+        ],
+        'primary key' => ['id'],
+    ];
+
+    $schema['cadbury_ps_tokens_rate_limit'] = [
+        'description' => 'Stores count for claim attempts',
+        'fields' => [
+            'id' => [
+                'description'   => 'The primary identifier',
+                'type'          => 'serial',
+                'unsigned'      => true,
+                'not null'      => true,
+            ],
+            'user_id' => [
+                'description'   => 'The ID of the user',
+                'type'          => 'int',
+            ],
+            'attempts' => [
+                'description'   => 'The number of unuccesful claim attempts',
+                'type'          => 'int',
+            ],
+            'next_attempt' => [
+                'description'   => 'The datetime of the last claim attempt',
+                'type'          => 'varchar',
+                'mysql_type'    => 'datetime',
+                'not null'      => FALSE,
+            ],
+        ],
+        'primary key' => ['id'],
+    ];
+
+    $schema['cadbury_ps_tokens_user_code'] = [
+        'description' => 'Stores the user code relationship for claimed codes',
+        'fields' => [
+            'id' => [
+                'description'   => 'The primary identifier',
+                'type'          => 'serial',
+                'unsigned'      => true,
+                'not null'      => true,
+            ],
+            'user_id' => [
+                'description'   => 'The ID of the user',
+                'type'          => 'int',
+            ],
+            'code_id' => [
+                'description'   => 'The ID of the code',
+                'type'          => 'int',
+            ],
+            'created' => [
+                'description'   => 'The created date for this result',
+                'type'          => 'varchar',
+                'mysql_type'    => 'datetime',
+                'not null'      => FALSE,
+            ],
+        ],
+        'primary key' => ['id'],
+    ];
+
+    $schema['cadbury_ps_tokens_code'] = [
+        'description' => 'Stores individual token codes',
+        'fields' => [
+            'id' => [
+                'description'   => 'The primary identifier',
+                'type'          => 'serial',
+                'unsigned'      => true,
+                'not null'      => true,
+            ],
+            'claim_code' => [
+                'description'   => 'The unique voucher code',
+                'type'          => 'text',
+                'length'        => 255,
+                'unique'        => true,
+            ],
+            'type' => [
+                'description'   => 'The code type (for future use)',
+                'type'          => 'text',
+                'length'        => 255,
+            ],
+            'claim_value' => [
+                'description'   => 'The number of tokens this voucher gives',
+                'type'          => 'int',
+            ],
+            'claimed' => [
+                'description'   => 'The claimed status of this code',
+                'type'          => 'int',
+            ],
+            'active' => [
+                'description'   => 'The system status of this code',
+                'type'          => 'int',
+            ],
+            'created' => [
+                'description'   => 'The created date for this result',
+                'type'          => 'varchar',
+                'mysql_type'    => 'datetime',
+                'not null'      => FALSE,
+            ],
+        ],
+        'primary key' => ['id'],
+    ];
+
+    return $schema;
+}

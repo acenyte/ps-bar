@@ -1,0 +1,8 @@
+name: cadbury_ps_theme_negotiator
+type: module
+description: 'Applies a theme bases on the URL or URL pattern of the request'
+core: 8.x
+package: "Custom"
+# Information added by Drupal.org packaging script on 2016-08-04
+version: '8.x-1.6'
+configure: cadbury_ps_theme_negotiator.settings_form

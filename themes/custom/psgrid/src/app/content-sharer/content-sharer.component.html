@@ -1,0 +1,143 @@
+<div class='page-container'>
+
+    <div class="content-sharer">
+        <mat-icon class="icon icon--close" [routerLink]="['']" > close </mat-icon>
+        <ng-container *ngIf='!this.inputData.active'>
+            <h4 class="heading">Keep bae smiling all day, every day</h4>
+            <p class="text">Here’s the down-low on how to do relationships right.</p>
+            <p class="text">Download to share, or click on an icon to share your tips on social</p>
+        </ng-container>
+
+        <ng-container *ngIf='this.inputData.active'>
+            <h4 class="heading">Have all the feels but no way to share them?</h4>
+            <p class="text">Tell them exactly what you’re thinking with a one-of-a-kind P.S. message.</p>
+        </ng-container>
+
+        <canvas class="content-sharer__canvas" id="content-sharer__canvas"></canvas>
+        <canvas class="content-sharer__canvas--hidden" id="content-sharer__canvas2"></canvas>
+
+        
+        <mat-tab-group *ngIf='!this.inputData.active' #tabGroup (selectedTabChange)="tabChanged($event)" [selectedIndex]="selectedTab">
+            <mat-tab label="Pick your relationship tip">
+                <swiper [config]="config" #usefulSwiper>
+    
+                    <div class="swiper-wrapper">
+    
+                        <div [ngClass]="(option.nid == contentId) ? 'swiper-slide swiper-slide--active' : 'swiper-slide'"
+                            *ngFor="let option of options, let i = index">
+    
+                            <img class="swiper-slide__thumb" src="{{option.images.original}}" attr.data-test="{{contentId}}"
+                                (click)='selectOption($event, option.nid)' attr.data-original="{{option.images.original}}" />
+    
+                        </div>
+    
+    
+    
+                    </div>
+    
+                </swiper>
+            </mat-tab>
+            <mat-tab label="Share it">
+                <div class="social-container">
+                    <a class="button" id="download" (click)="downloadFile('PS Relationship Tip.jpg')">
+                        Download to share
+                    </a>
+                    
+                    <div class="loader" id="loader"><div></div><div></div><div></div></div>
+                    <share-button id="relationshiptip-share-facebook" button="facebook" text="Share" [showText]="false" [url]="resultURL" [autoSetMeta]="true"></share-button>
+                    <share-button id="relationshiptip-share-twitter" button="twitter" text="Tweet" [showText]="false" [title]="'Made with Cadbury P.S.'" [url]="resultURL" [autoSetMeta]="true"></share-button>
+                    <share-button id="relationshiptip-share-whatsapp" button="whatsapp" text="Whatsapp" [showText]="false" [url]="resultURL" [autoSetMeta]="true"></share-button>
+    
+    
+    
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+
+        <mat-tab-group *ngIf='this.inputData.active' #tabGroup (selectedTabChange)="tabChanged($event)" [selectedIndex]="selectedTab">
+
+            <mat-tab label="Pick your message">
+                <p class="text">Find the right words</p>
+                <form>
+
+                    <swiper [config]="config" #usefulSwiper>
+
+                        <div class="swiper-wrapper">
+
+                            <div [ngClass]="(option.nid == contentId) ? 'swiper-slide swiper-slide--active' : 'swiper-slide'"
+                                *ngFor="let option of options, let i = index">
+
+                                <img class="swiper-slide__thumb" src="{{option.images.original}}" attr.data-test="{{contentId}}"
+                                    (click)='selectOption($event, option.nid)' attr.data-original="{{option.images.original}}" />
+
+                            </div>
+
+                        </div>
+
+                    </swiper>
+
+                </form>
+
+                <button class="button button--next" (click)="changeTab(1)">NEXT</button>
+
+            </mat-tab>
+
+            <mat-tab label="Who is it for?">
+                <p class="text">Enter all the details</p>
+                <form class="form">
+
+                    <ng-template matStepLabel>Who is it for?</ng-template>
+
+                    <mat-form-field [ngClass]="{'error': (profanityCheckTo) }">
+                        <input matInput class="input__to" placeholder="Dear:" value="" (keyup)='drawCanvas()' maxlength="15">
+                    </mat-form-field>
+
+                    <mat-form-field [ngClass]="{'error': (profanityCheckFrom) }">
+                        <input matInput class="input__from" placeholder="From:" value="" (keyup)='drawCanvas()'
+                            maxlength="15">
+                    </mat-form-field>
+
+                    <mat-form-field>
+
+                        <small class="preload-font" style="font-family: 'BowlbyOne-Regular'">.</small>
+
+                        <mat-select placeholder="Choose your font" (selectionChange)="changeFont()" [(value)]="selectedFont">
+                            <mat-option *ngFor="let font of fonts; let isFirst = first" [value]="font.value" selected='isFirst'>
+                                {{font.name}}
+                            </mat-option>
+                        </mat-select>
+
+                    </mat-form-field>
+
+                </form>
+                <button class="button button--next" (click)="skipTab()" [disabled]='profanityCheckTo || profanityCheckFrom'>SKIP</button>
+                <button class="button button--next" (click)="changeTab(2)" [disabled]='profanityCheckTo || profanityCheckFrom'>NEXT</button>
+
+            </mat-tab>
+
+            <mat-tab label="Share it" [disabled]='profanityCheckTo || profanityCheckFrom'>
+
+                <ng-template matStepLabel>Share it</ng-template>
+                <p class="text">Download to share, or click on an icon to share your message on social</p>
+                <div class="social-container">
+
+                    <a class="button" id="download" (click)="downloadFile('PS Personalised Message.jpg')">
+                        Download to share
+                    </a>
+
+                    <div class="loader" id="loader"><div></div><div></div><div></div></div>
+                    <share-button id="personalised-share-facebook" button="facebook" text="Share" [showText]="false" [url]="resultURL" [autoSetMeta]="true"></share-button>
+                    <share-button id="personalised-share-twitter" button="twitter" text="Tweet" [showText]="false" [title]="'Made with Cadbury P.S.'" [url]="resultURL" [autoSetMeta]="true"></share-button>
+                    <share-button id="personalised-share-whatsapp" button="whatsapp" text="Whatsapp" [showText]="false" [url]="resultURL" [autoSetMeta]="true"></share-button>
+
+
+
+                </div>
+
+            </mat-tab>
+
+        </mat-tab-group>
+
+    </div>
+
+</div>

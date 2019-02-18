@@ -1,0 +1,6 @@
+cadbury_ps_auth.auth:
+  path: /registration/complete
+  defaults:
+    _controller: Drupal\cadbury_ps_auth\Controllers\AuthController::registrationComplete
+  requirements:
+    _permission: 'access content'

@@ -1,0 +1,20 @@
+<div class='page-container'>
+
+
+    <mat-icon class="icon icon--close" [routerLink]="['']">
+        close
+    </mat-icon>
+    <div class="gif" *ngIf="gif">
+
+
+            <img class="image" src="{{ gif.images.original }}">
+
+            <a class="button"
+                id="download"
+                (click)='downloadFile()'>
+                Download to share
+            </a>
+
+    </div>
+
+</div>

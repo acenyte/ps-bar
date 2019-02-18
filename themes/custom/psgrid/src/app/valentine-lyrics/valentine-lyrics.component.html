@@ -1,0 +1,214 @@
+<div class='page-container lyrics'>
+
+    <mat-icon class="icon icon--close" [routerLink]="['']" > close </mat-icon>
+
+    <mat-tab-group #tabGroup [selectedIndex]="selectedTab" (selectedTabChange)="tabChanged($event)">
+
+        <mat-tab>
+                <br>
+                <img class="image image--campaing"src="assets/images/CampaignPageLogo.gif">
+                <h4 class="heading">Get ready to create your own love song</h4>
+                <p class="text">
+                    Now let’s get down to writing a love song in your language. 
+                    Your song can be about how good being with bae makes you feel, or how awesome your dad is, or how much fun you have hanging with your bestie.
+                    <br>
+                    <br>
+                    If we like what you’re putting down, we will produce your track using professional musicians and singers.
+                    <br>
+                    <br>
+                    You can submit up to 3 different song lyrics.
+                </p>
+                <br>
+                <br>
+                <mat-checkbox [(ngModel)]="ageChecked" 
+                        name="age"
+                        id="age-check"
+                        class="text" 
+                        required> 
+                        I confirm that I am 18+, or have consent from a legal guardian who is 18+
+                </mat-checkbox>
+        
+                <button class="button"
+                    (click)="changeTab(1)"
+                    [disabled]="!ageChecked">
+                    Write your lyrics here
+                </button>
+
+        </mat-tab>
+
+        <mat-tab>
+            <mat-icon class="icon icon--back" (click)="changeTab(0)" > arrow_back <span class="text"> Go back</span></mat-icon>
+            <br>
+            <form class="form" #formSongWriter>
+
+                <mat-form-field [ngClass]="{'error': (profanityCheckTitle) }">
+
+                    <input matInput 
+                        id = "title-input"
+                        (input)='validateLyrics(1)'
+                        (blur)='validateLyrics(1)'
+                        placeholder="Song Title:" 
+                        value="" 
+                        maxlength="20"
+                        required>
+                </mat-form-field>
+                <small class="error error-message"></small>
+
+                <mat-form-field [ngClass]="{'error': (profanityCheckTo) }">
+                    
+                    <input matInput 
+                        id = "to-input"
+                        (input)='validateLyrics(3)' 
+                        (blur)='validateLyrics(3)' 
+                        placeholder="Who is the song for:" 
+                        value="" 
+                        maxlength="20"
+                        >
+                </mat-form-field>
+                <small class="error error-message"></small>
+                
+                
+                <mat-form-field appearance="outline">
+                    <mat-label>Write your lyrics here</mat-label>
+                    <textarea matInput 
+                        id = "lyrics-input" 
+                        (input)='validateLyrics(2)' 
+                        placeholder="Remember: 
+Make it personal - this is your song. 
+Your lyrics can rhyme but don’t have to.
+You can write the song in your home language.
+The lyrics don't have to be romantic. It can be for ma, pa,
+your friend or bae. 
+Don’t use lyrics from an existing song."
+                        value="" 
+                        maxlength="350"
+                        minlength="100"
+                        required>
+                    </textarea>
+
+                </mat-form-field>
+
+                <small class="error error-message"></small>
+                <div id="textarea_feedback">{{lyricsCharactersLeft}} characters left</div>
+                <img class="image image__selected-image" [src]="selectedImage" *ngIf="selectedImage">
+                
+                <mat-select class="lyric-select" [(ngModel)]="selectedLanguageId" name="language" (selectionChange)="changeLanguage()" placeholder="Select the last line of your lyrics*">
+                    <mat-option class="lyric-select" *ngFor="let message of valentineMessages" [value]="message.nid">
+                        {{ message.text }}
+                    </mat-option>
+                </mat-select>
+
+                <br>
+                <br>
+                <small class="text">*Required field</small>
+                
+                <button class="button" (click)="changeTab(2)" [disabled]="!lyricsValid" >
+                    NEXT
+                </button>
+            </form>
+
+        </mat-tab>
+
+        <mat-tab>
+            <mat-icon class="icon icon--back" (click)="changeTab(1)" > arrow_back <span class="text"> Go back</span></mat-icon> 
+            <br>
+            <h4 class="heading">Fill in your deets</h4>
+            <p class="text">
+                    Please share your contact details so we can get hold of you if your lyrics get chosen.
+            </p>
+            <br>
+            
+            <form class="form">
+
+                <mat-form-field [ngClass]="{'error': (profanityCheckName) }">
+                    <input matInput
+                        id = "name-input" 
+                        placeholder="Name" 
+                        value="" 
+                        maxlength="15"
+                        required>
+                </mat-form-field>
+                <small class="error"></small>
+
+                <mat-form-field >
+                    <input matInput
+                        [formControl]="emailFormControl"
+                        (blur)="validateForm()"
+                        id = "email-input" 
+                        placeholder="Email" 
+                        value="" 
+                        required>
+                </mat-form-field>
+                <small class="error"></small>
+
+                <mat-form-field >
+                    <input matInput
+                        [formControl]="mobileFormControl"
+                        (blur)="validateForm()"
+                        id = "mobile-input"
+                        type="tel"
+                        maxlength="10"
+                        minlength="10" 
+                        placeholder="Mobile" 
+                        value="" 
+                        required>
+                </mat-form-field>
+                <small class="error"></small>
+
+                <br>
+                <mat-checkbox [(ngModel)]="termsChecked" 
+                        (change)="validateForm()"
+                        name="terms"
+                        id="lyrics-terms-check" 
+                        required> 
+                        I have read and accept the 
+                            <a class="link" [routerLink]="['/ps/terms-and-conditions-mzansi-love-songs']" target="_blank">Terms and Conditions </a>
+                </mat-checkbox>
+                
+                <button class="button" (click)="createEntry()" [disabled]="!formValid" >
+                    Submit
+                </button>
+            </form>
+    
+        </mat-tab>
+        <mat-tab>
+                <br>
+                <img class="image" [src]="selectedImage" *ngIf="selectedImage">
+                <h3 class="heading">Awesome, your lyrics have been submitted.</h3>
+                <p class="text"> 
+                        If your lyrics are chosen, we will let you know within 10 days. 
+                        Once the song has been produced it will be uploaded to the P.S. website for you and the rest of SA to listen and share.
+                </p>
+                <br>
+                <br>
+                <a class="button button-dark button-small"
+                    [routerLink]="['']"
+                    fragment="iloveyou">
+                    HOME
+                </a>
+
+                <a class="button button-small"
+                    (click)="changeTab(1)">
+                    CREATE ANOTHER SONG
+                </a>
+    
+        </mat-tab>
+
+        <mat-tab>
+            <br>
+            <img class="image" src="assets/sorry_bar.png" *ngIf="selectedImage">
+            <h3 class="heading">Sorry, you’ve already submitted all 3 of your song lyrics. </h3>
+            <p class="text"> 
+                Don't worry if your lyrics haven't been chosen, you can still select a song in your language and share it this Valentine's Day. 
+            </p>
+            <br>
+            <br>
+            <a class="button button-dark button-small"
+                [routerLink]="['/ps/share-mzansi-songs']">
+                CHOOSE A SONG
+            </a>
+
+        </mat-tab>
+    </mat-tab-group>
+
+</div>

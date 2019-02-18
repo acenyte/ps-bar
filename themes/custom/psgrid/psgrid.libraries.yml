@@ -1,0 +1,13 @@
+global-styling:
+  version: 1.x
+  css:
+    theme:
+      dist/styles.css: {}
+  js:
+    dist/polyfills.js: {}
+    dist/scripts.js: {}
+    dist/main.js: {}
+    dist/runtime.js: {}
+assets-js:
+  js:
+    https://connect.facebook.net/en_US/sdk.js: { type: external, attributes: { defer: true, async: true } }

@@ -1,0 +1,6 @@
+services:
+    cadbury_ps_theme_negotiator.theme.negotiator:
+        class: Drupal\cadbury_ps_theme_negotiator\Theme\MultipleThemeNegotiator
+        arguments: ['@config.factory', '@path.alias_manager', '@router.admin_context','@path.current']
+        tags:
+          - { name: theme_negotiator, priority: 1000 }

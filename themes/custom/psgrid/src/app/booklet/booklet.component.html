@@ -1,0 +1,105 @@
+<div class='page-container'>
+
+    <div class="booklet">
+        <mat-icon class="icon icon--close" [routerLink]="['']">
+            close
+        </mat-icon>
+        <mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)" [selectedIndex]="selectedTab">
+            <mat-tab label="Choose your cover">
+
+                <h4 class="heading">Give them something they can’t wait to exchange</h4>
+                <p class="text">The I.O.U Booklet is 10 gifts that can be cashed in at any time. <br>Select your favourite cover, and say who it is for.</p>
+
+                <swiper [config]="configIOU" #iouSwiper class="iou-swiper">
+
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide" *ngFor="let cover of covers">
+
+                            <img src="{{cover.image.thumbnail}}" [attr.data-color]="cover.textBackgroundColor" class="booklet__cover-image">
+
+                            <div class="recipient">
+                                <div class="text recipient__text" [style.backgroundColor]="cover.textBackgroundColor"
+                                    *ngIf="recipient !== ''">
+                                    {{recipient}}
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </swiper>
+                <mat-form-field [ngClass]="{'error': (profanityCheckTo) }">
+                    <input matInput placeholder="Recipient’s name" value="" [(ngModel)]='recipient' (input)='setCover()'
+                        maxlength="15" required>
+                </mat-form-field>
+
+                <button class="button button--next" (click)="changeTab(1)" [disabled]='profanityCheckTo || nameEmpty'>NEXT</button>
+
+            </mat-tab>
+
+            <mat-tab label="Pick your vouchers" [disabled]='profanityCheckTo || nameEmpty'>
+
+                <h4 class="heading">Which {{maxVouchers}} vouchers are you adding to your booklet?</h4>
+
+                <ul class="booklet__voucher-list ">
+
+                    <li *ngFor="let voucher of vouchers" class="booklet__voucher-item">
+
+                        <mat-checkbox (click)='chooseVoucher(voucher.image.thumbnail)'>
+                            <img src="{{voucher.image.thumbnail}}" [attr.data-src]="voucher.image.original" class="booklet__voucher-image">
+                        </mat-checkbox>
+
+                    </li>
+
+                </ul>
+                <button class="button button--next" (click)="changeTab(2)">NEXT</button>
+            </mat-tab>
+
+            <mat-tab label="Your I.O.U Booklet" [disabled]='profanityCheckTo || nameEmpty'>
+                <h4 class="heading">Your cover</h4>
+                <img src="{{this.finalBooklet.cover}}" class="booklet__voucher-image--stamp">
+                <h4 class="heading">+</h4>
+                <h4 class="heading">Drag and drop the vouchers in your favourite order</h4>
+
+                <ul class="booklet__voucher-list booklet__voucher-list--sortable" [sortablejs]="finalBooklet.vouchers"
+                    [sortablejsOptions]="{ animation: 150 }">
+
+                    <li *ngFor="let voucher of finalBooklet.vouchers" class="booklet__voucher-item">
+
+                        <img src="{{voucher}}" class="booklet__voucher-image">
+
+                    </li>
+
+                </ul>
+                <button class="button button--next" (click)="changeTab(3)">NEXT</button>
+            </mat-tab>
+
+            <mat-tab label="Share it" [disabled]='profanityCheckTo || nameEmpty'>
+
+                <h4 class="heading">Your I.O.U Booklet is ready!</h4>
+                <p class="text">Download to share, or click on an icon to share your booklet on social.</p>
+                <canvas class="iou__canvas" id="iou__canvas"></canvas>
+                <canvas class="iou__canvas--hidden" id="iou__canvas2"></canvas>
+
+                <div class="social-container">
+
+                    <button class="button" (click)='downloadPDF()' id="download">
+                        DOWNLOAD AND SHARE
+                    </button>
+
+                    <div class="loader" id="loader"><div></div><div></div><div></div></div>
+                    <share-button id="iou-share-facebook" button="facebook" text="Share" [showText]="false" [url]="resultURL" [autoSetMeta]="true"></share-button>
+                    <share-button id="iou-share-twitter" button="twitter" text="Tweet" [showText]="false" [url]="resultURL" [autoSetMeta]="true"></share-button>
+                    <share-button id="iou-share-whatsapp" button="whatsapp" text="Share" [showText]="false" [url]="resultURL" [autoSetMeta]="true"></share-button>
+
+                </div>
+
+            </mat-tab>
+
+        </mat-tab-group>
+
+    </div>
+
+</div>

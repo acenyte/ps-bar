@@ -1,0 +1,46 @@
+<div class='page-container result'>
+    <small class="preload-font" style="font-family: 'Anton'">.</small>
+    <small class="preload-font" style="font-family: 'Bangers'">.</small>
+    <small class="preload-font" style="font-family: 'BowlbyOne-Regular'">.</small>
+    <small class="preload-font" style="font-family: 'Bungee'">.</small>
+    <small class="preload-font" style="font-family: 'Fredoka One'">.</small>
+    <small class="preload-font" style="font-family: 'Hanalei Fill'">.</small>
+    <small class="preload-font" style="font-family: 'Kalam'">.</small>
+    <small class="preload-font" style="font-family: 'Knewave'">.</small>
+    <small class="preload-font" style="font-family: 'Pacifico'">.</small>
+    <small class="preload-font" style="font-family: 'Passion One'">.</small>
+    <small class="preload-font" style="font-family: 'Permanent Marker'">.</small>
+    <small class="preload-font" style="font-family: 'Sedgwick Ave'">.</small>
+    <small class="preload-font" style="font-family: 'Sigmar One'">.</small>
+
+
+    <canvas class="result__canvas" id="result__canvas"></canvas>
+
+    <a class="button"
+        (click)="downloadFile('PS Message.jpg')"
+        *ngIf='!isIOU'>
+        Download
+    </a>
+    <a class="button small"
+        *ngIf='!isIOU'
+        [routerLink]='returnUrl'>
+        Create a new message
+    </a>
+
+
+
+    <a class="button"
+            (click)="downloadPdf()"
+            *ngIf='isIOU'>
+        Download PDF
+    </a>
+    <a class="button small"
+        *ngIf='isIOU'
+        [routerLink]='returnUrl'>
+        Create a new booklet
+    </a>
+    <a class="button"
+        [routerLink]="['']">
+        Home
+    </a>
+</div>

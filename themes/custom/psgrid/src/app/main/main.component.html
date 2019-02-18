@@ -1,0 +1,35 @@
+
+<div class="page-container main">
+
+    {{gridClass}}
+    <div class="loader" id="loader"><div></div><div></div><div></div></div>
+
+    <div class="grid">
+
+        <ng-container *ngFor="let option of options; index as i">
+
+
+            <a [routerLink]="option.url"
+                attr.data-order="{{ option.order }}"
+                attr.data-nid="{{ option.nid }}"
+                attr.data-index="{{i}}">
+
+                <div class="grid__item {{option.gridClass}} {{option.style}}" attr.data-order="{{ option.order }}">
+                    <img class="image"
+                        *ngIf="option.type != 'ps_option_gif'"
+                        [src]="option.images.original">
+
+                    <!-- gif uses different image object -->
+                    <img
+                        class="image"
+                        *ngIf="option.type == 'ps_option_gif'"
+                        [src]="option.thumb">
+                </div>
+
+            </a>
+
+        </ng-container>
+
+    </div>
+
+</div>

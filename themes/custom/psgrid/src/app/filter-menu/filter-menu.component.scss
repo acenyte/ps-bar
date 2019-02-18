@@ -1,0 +1,51 @@
+
+@import "../../scss/mixins";
+@import "../../scss/colours";
+
+.filter-radio-group {
+    @include flex;
+    flex-direction: column;
+    width: 170px;
+    justify-content: center;
+    font-family: 'GalanoGrotesque-Bold';
+    margin-bottom: 60px;
+
+
+
+    & .mat-radio-label-content {
+        width: 100%
+    }
+}
+
+
+.icon {
+
+    &.icon--help {
+        margin: auto;
+        color: $caramilk-dark;
+        position: static;
+        display: block;
+        margin-top: 10px;
+    }
+
+}
+
+.help {
+    padding: 15px 0;
+
+    & .link {
+        font-size: 16px;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        font-family: 'GalanoGrotesque-Bold', Arial, Helvetica, sans-serif;
+        color: $primary-extradark;
+    }
+
+    & .link:hover {
+        text-decoration: underline;
+    }
+}
+
+

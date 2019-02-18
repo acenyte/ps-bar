@@ -1,0 +1,120 @@
+@import "../scss/layout";
+@import "../scss/colours";
+@import "../scss/mixins";
+
+
+.icon {
+    color:#fff;
+    position:fixed;
+    padding: 15px;
+    top: 0px;
+    z-index: 3;
+    cursor: pointer;
+
+
+    &.icon--coin {
+        background-position: 10px 15px;
+        background-size: 28px;
+        background-repeat: no-repeat;
+        background-image:url( ../assets/images/ps-coin.png );
+        right: 0px;
+        width: 24px;
+        height: 24px;
+        top: 0px;
+
+
+
+        @media screen and (min-width: $tablet) {
+            background-position: 5px 10px;
+            background-size: 34px;
+            right: 5px;
+            padding: 15px;
+            top: 5px;
+        }
+
+    }
+
+    &--account {
+        right: 0px;
+        width: 24px;
+        height: 24px;
+    }
+
+    @media screen and (min-width: $tablet) {
+        font-size: 30px;
+        padding: 20px;
+    }
+
+
+}
+
+.account {
+    color: white;
+    text-align: right;
+    position: fixed;
+    right: 10px;
+    top: 15px;
+    z-index: 3;
+    cursor: pointer;
+
+    & .account__link,
+    & .account__link:visited {
+        padding: 0 5px;
+        color: white;
+        text-decoration: none;
+        font-family: 'GalanoGrotesque-Bold', Arial, Helvetica, sans-serif;
+        display: block;
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    & .account__link:hover {
+        text-decoration: underline;
+    }
+
+    & .seperator {
+        display: none;
+    }
+
+    @media screen and (min-width: $tablet) {
+        right: 30px;
+        top: 20px;
+
+        & .account__link,
+        & .account__link:visited {
+            display: inline;
+            font-size: 16px;
+            line-height: 16px;
+        }
+
+        & .seperator {
+            display: inline;
+        }
+
+    }
+}
+
+.container {
+    z-index: 1;
+}
+
+
+.mat-drawer.mat-sidenav {
+
+    padding: 85px 30px 30px;
+    @include flex;
+    justify-content: top;
+    flex-direction: column;
+
+    @media screen and (min-width: $tablet) {
+        justify-content: center;
+    }
+
+}
+
+.mat-drawer-backdrop.mat-drawer-shown {
+    background-color: rgba(0,0,0,0);
+}
+
+
+

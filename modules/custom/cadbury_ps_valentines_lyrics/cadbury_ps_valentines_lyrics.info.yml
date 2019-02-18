@@ -1,0 +1,7 @@
+name: 'Cadbury PS Valentines 2019 API'
+description: 'Cadbury PS Valentines 2019 API'
+type: module
+core: 8.x
+package: custom
+dependencies:
+  - node
